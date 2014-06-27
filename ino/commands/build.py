@@ -163,7 +163,9 @@ class Build(Command):
             self.e['cppflags'].append('-DUSB_VID=%s' % board['build']['vid'])
         if 'pid' in board['build']:
             self.e['cppflags'].append('-DUSB_PID=%s' % board['build']['pid'])
-            
+        if 'cppoption1' in board['build']:
+            self.e['cppflags'].append(board['build']['cppoption1'])
+
         if self.e.arduino_lib_version.major:
             variant_dir = os.path.join(self.e.arduino_variants_dir, 
                                        board['build']['variant'])
